@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>BMI Calculator</title>
+
+    <style>
+        #bmiresult{
+font-weight: bolder;
+font-size:x-large;
+font-family: 'Times New Roman', Times, serif;
+color:rgb(255, 166, 0);
+margin-top:5%;
+text-align:center;
+
+
+        }
+        #message{
+font-weight: bolder;
+font-size:x-large;
+font-family: Arial, Helvetica, sans-serif;
+
+margin-top:2%;
+text-align:center;
+
+
+        }
+    </style>
+</head>
+
+<body class="container">
+    <h2> BMI Calculator with JS</h2>
+    <div class="row">
+    <form action="#" method="post">
+       <div class="col-md-12 form-group">
+       
+                <label for="weight"  style="text-transform:uppercase;" class="form-control">Weight</label>
+      
+         
+            
+                <input id="weight" class="form-control" type="number" placeholder="weight in KG" min="0"><br />
+
+            
+        </div>
+        
+       
+       </div>
+           <div class="col-md-12 form-group">
+            <label for="height" style="text-transform:uppercase;" class="form-control">Height</label>
+            <input id="height" class="form-control" type="number" placeholder="height in cm" required min="0"><br />
+           </div>
+           
+            <button type="button" class="btn btn-success" onclick="calcBMI()">Submit</button>
+            <button type="button" class="btn btn-danger" onclick="reload()">Reset Values</button>
+      
+       
+    </form>
+</div>
+
+    <p id="bmiresult"></p>
+    <p id="message"></p>
+
+    <!-- <script src="script.js"></script> -->
+
+    <script>
+function calcBMI(){
+    let weight = document.getElementById('weight').value;
+    let height = document.getElementById('height').value/100;
+
+    let bmi =((weight)/Math.pow(height, 2)).toFixed(2);
+
+
+
+if(bmi<18.4){
+    document.getElementById('message').innerHTML="You are underweight!";
+    document.getElementById('message').style.color="red";
+
+
+}  else if(bmi>=18.5 && bmi<=25){
+    document.getElementById('message').innerHTML='You are a heatlty weight person!';
+    document.getElementById('message').style.color="green";
+}  else{
+    document.getElementById('message').innerHTML='You are a overweight person!';
+    document.getElementById('message').style.color="orange";
+}
+
+
+
+document.getElementById('bmiresult').innerHTML='Your BMI is:' + bmi;
+}
+function reload(){
+    window.location.reload();
+}
+    </script>
+</body>
+
+</html>
